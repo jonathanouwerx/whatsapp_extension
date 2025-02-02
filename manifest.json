@@ -1,0 +1,22 @@
+{
+    "name": "Whatsapp Reaction Checker",
+    "description": "This chrome web extension checks which people have reacted to a message and which haven't from a list.",
+    "version": "0.1.0",
+    "permissions": ["tabs", "storage"],
+    "host_permissions": ["https://web.whatsapp.com/*"],
+    "manifest_version": 3,
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://web.whatsapp.com/*"],
+        "js": ["contentScript.js"]
+      }
+    ]
+  }
+  

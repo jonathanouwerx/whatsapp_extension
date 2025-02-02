@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Extension</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        color: #555;
+        margin-top: 20px;
+      }
+
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        margin-top: 10px;
+      }
+
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #4caf50;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+
+      #name-input {
+        width: calc(100% - 40px);
+        padding: 10px;
+        margin: 6px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+      }
+
+      .add-button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 5px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .add-button:hover {
+        background-color: #45a049;
+      }
+
+      .button-frame {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        gap: 5px; /* Add padding between children */
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 2px 6px;
+        margin: 5px 0;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .remove-btn {
+        background: #f44336;
+        color: white;
+        border: none;
+        padding: 2px 6px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .remove-btn:hover {
+        background: #e53935;
+      }
+
+      #name-list {
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 5px;
+        margin: 10px 0;
+      }
+
+      #name-list::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      #name-list::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+
+      #name-list::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+      }
+
+      #name-list::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WhatsApp Reaction Checker</h1>
+
+    <label class="switch">
+      <input type="checkbox" id="toggle-extension" />
+      <span class="slider"></span>
+    </label>
+
+    <h2>Manage Name List</h2>
+    <input type="text" id="name-input" placeholder="Michael, Sarah, Francois" />
+    <div class="button-frame">
+      <button class="add-button" id="add-name">Add</button>
+      <button class="add-button" id="add-many">Add Many</button>
+    </div>
+
+    <ul id="name-list"></ul>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
